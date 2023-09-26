@@ -1,0 +1,5 @@
+Week 02
+
+ideal RNG is just white noise (i.e. all frequencies have the same amplitude)
+D* is a metric of how well i sample volume
+Rejection method: Shoot and count
