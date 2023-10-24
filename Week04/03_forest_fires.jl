@@ -37,7 +37,7 @@ end
 
 function draw_forest(G::Matrix{Int8}, suffix::String="")
     color = cgrad([:white,:green,:red])
-    heatmap(G, c=color, clims=(0, 2))
+    heatmap(G, c=color, clims=(0, 2), yflip = true)
     png("Week04/forest" * suffix)
 end
 
