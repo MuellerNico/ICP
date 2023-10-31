@@ -53,4 +53,6 @@ draw_traffic(simulate(periodic))
 -- Conclusions --
 Pattern resembles a checker board. With L/2 cars it's a perfect pattern. With less there are some gaps. 
 With more cars congestion is created as some form of "back log" and creates a filled stripe along the spacetime plot. 
+
+Phase transition at p=0.5
 =#

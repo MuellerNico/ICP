@@ -72,4 +72,5 @@ main()
 
 #= -- notes --
 particles can "jump" over each other with this way of timestepping
+-> actually that's accurate because it represents the possibility of "reflecting" collision as 50/50. 
 =#

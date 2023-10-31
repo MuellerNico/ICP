@@ -53,3 +53,8 @@ function main()
 end
 
 main()
+
+#= note for the exam: 
+The game of life is turing complete
+
+=#
