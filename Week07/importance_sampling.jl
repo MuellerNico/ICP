@@ -1,7 +1,7 @@
 using Plots
 
 f(x) = exp(-x^2)
-C = 1.0 / (-exp(-1) + 1) # constant to make integral of g(x) 1
+C = 1.0 / (-exp(-1) + 1) # constant to make integral of g(x) 1 over [0,1]
 g(x) = exp(-x) * C
 U(x) = 1
 
@@ -11,6 +11,7 @@ function get_distribution(g::Function, N::Integer, RNG=rand)::Vector{Float64}
     for i=1:N
         while true
             x, y = RNG(2)
+            y *= g(0) # max value
             if y < g(x) # accept
                 dist[i] = x
                 break
@@ -66,6 +67,7 @@ end
 
 plot_convergence()
 
+println(C)
 histogram(get_distribution(g, 10000), title="sampling using g(x)")
 plot!([0:0.05:1], g, ylabel="g(x)")
 png("Week07/g_dist")
