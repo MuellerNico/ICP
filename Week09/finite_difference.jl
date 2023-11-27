@@ -43,9 +43,10 @@ function CTCS()
     for j=1:n
         M[j, (j)%n+1] = -c # superdiagonal
         M[j, (j-2+n)%n+1] = c #subdiagonal
+        M[j,j] = 1
     end
     heatmap(M, yflip = true)
-    png("matrixheatmap")
+    png("Week09/matrixheatmap")
 
     phi = zeros(2n)
     phi[1:n] = initial_square()
