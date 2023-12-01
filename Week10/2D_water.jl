@@ -89,8 +89,8 @@ function main()
             drag = -[b*vx[i,j], b*vy[i,j]]
             kinematic_visc = nu*[second_derivative_x(vx,i,j), second_derivative_y(vy,i,j)] # this is just component wise 1D second derivative
 
-            dvx_dt::Float64 = gravity[1] + velocity_grad[1] + drag[1] + kinematic_visc[1]
-            dvy_dt::Float64 = gravity[2] + velocity_grad[2] + drag[2] + kinematic_visc[2]
+            dvx_dt::Float64 = gravity[1] + velocity_grad[1] + drag[1] + #kinematic_visc[1]
+            dvy_dt::Float64 = gravity[2] + velocity_grad[2] + drag[2] + #kinematic_visc[2]
 
             sol[m+1,i,j]   = h[i,j] + dt * dh_dt
             velx[m+1,i,j]  = vx[i,j] + dt * dvx_dt
