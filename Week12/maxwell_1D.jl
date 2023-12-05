@@ -1,19 +1,22 @@
 using Plots
 using Distributions
 
-T = 10 # timespan
-num_timesteps = 200 # num timesteps
-dt = T / num_timesteps # timestep size
-
-L = 10 # domain length
-num_gridpoints = 100 # num grid points
-dx = L / num_gridpoints
+L = 20 # domain length
+T = 50 # timespan
+num_timesteps = 1000 # num timesteps
 
 lambda = 1/2 #dt/dx
-@show dt / dx
-@show t0 = 3
-sigma = 1
 
+dt = T / num_timesteps # timestep size
+dx = dt / lambda
+num_gridpoints = Int(L / dx) # num grid points
+
+@show dt / dx
+@show num_gridpoints
+@show num_timesteps
+
+t0 = 3
+sigma = 1
 
 E = zeros(num_gridpoints, num_timesteps)
 B = zeros(num_gridpoints, num_timesteps)
@@ -43,7 +46,7 @@ function generate_gif()
     E_range = LinRange(1, num_gridpoints, num_gridpoints)
     B_range = LinRange(1, num_gridpoints, num_gridpoints) .+ 0.5
     anim = @animate for n = 1:num_timesteps
-        plot(xlabel="L", ylabel="amplitude")
+        plot(xlabel="L", ylabel="amplitude", ylims=(-2,2))
         plot!(E_range, E[:,n], label="E")
         plot!(B_range, B[:,n], label="B")
     end
@@ -51,9 +54,9 @@ function generate_gif()
 end
 
 function field_heatmap()
-    heatmap(E)
+    heatmap(E, xlabel="time", ylabel="i")
     png("Week12/E_field")
-    heatmap(B)
+    heatmap(B, xlabel="time", ylabel="i")
     png("Week12/B_field")
 end
 
